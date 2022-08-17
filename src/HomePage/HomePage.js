@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
+import './input.scss'
 
-const  HomePage = () => {
+const HomePage = () => {
 
   const [value, onChange] = useState(new Date())
+  const [showForm, setShowForm] = useState(false)
   const [title, setTitle] = useState("")
   const [time, setTime] = useState("")
   const [description, setDescription] = useState("")
@@ -25,38 +27,54 @@ const  HomePage = () => {
     setAppointments([...appointments, body])
   }
 
-  return(
-    <div>
+  return (
+    <main>
 
-    <div>
-      <div>
-        <Calendar onChange={onChange} value={value} />
+      <div id="left-container">
+        <div>
+          <Calendar onClickDay={() => setShowForm(true)} onChange={onChange} value={value} />
+        </div>
+        {showForm ?
+          <form id="form-container" onSubmit={onSubmitForm}>
+            <span>
+              <p>{value.toLocaleDateString()}</p>
+              <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+            </span>
+            <label>Event/Appointment</label>
+            <input
+              className="form-input"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <label>Description</label>
+            <input
+              className="form-input"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <button id="form-button">Save</button>
+          </form> : <p>Choose a day</p>
+        }
       </div>
-      <form onSubmit={onSubmitForm}>
-        <p>{value.toLocaleDateString()}</p>
-        <input placeholder="Event/Appointment title" type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
-        <input type="time" value={time} onChange={(e) => setTime(e.target.value)}/>
-        <input placeholder="Description" type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
-        <button>Save</button>
-      </form>
-    </div>
 
-    <div>
-      {appointments.length > 0 &&
-        appointments.map((appointment) => {
-          return(
-            <div>
-              <p>{appointment.title}</p>
-              <p>{appointment.date}</p>
-              <p>{appointment.time}</p>
-              <p>{appointment.description}</p>
-            </div>
-          )
-        })
-      }
-    </div>
+      <div onClick={() => setShowForm(false)}>
+        {appointments.length > 0 &&
+          appointments.map((appointment) => {
+            return (
+              <div>
+                <p>{appointment.title}</p>
+                <p>{appointment.date}</p>
+                <p>{appointment.time}</p>
+                <p>{appointment.description}</p>
+              </div>
+            )
+          })
+        }
+      </div>
 
-    </div>
+    </main>
   )
 }
 
