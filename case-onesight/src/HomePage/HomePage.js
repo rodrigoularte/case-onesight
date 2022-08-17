@@ -1,7 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import './input.scss'
+import {db} from "../index"
+import { addDoc, collection, getDocs } from "firebase/firestore"
 
 const HomePage = () => {
 
@@ -14,6 +16,31 @@ const HomePage = () => {
 
   console.log(appointments)
 
+  const getAppointments = async () => {
+
+    const querySnapshot = await getDocs(collection(db, "appointment"))
+    const firebaseData = querySnapshot.docs.map((doc) => {
+      // console.log(`${doc.id} => ${doc.data()}`)
+      return {...doc.data(), id: doc.id}
+    })
+    setAppointments(firebaseData)
+  }
+
+  const createAppointment = async (body) => {
+    try {
+      const docRef = await addDoc(collection(db, "appointment"), body)
+
+      console.log("Document written with ID: ", docRef.id)
+      window.location.reload()
+    } catch (e) {
+      console.error("Error adding document: ", e)
+    }
+  }
+
+  useEffect(() => {
+    getAppointments()
+  }, [])
+
   const onSubmitForm = (event) => {
     event.preventDefault()
 
@@ -24,7 +51,7 @@ const HomePage = () => {
       description
     }
 
-    setAppointments([...appointments, body])
+    createAppointment(body)
   }
 
   return (
@@ -63,7 +90,7 @@ const HomePage = () => {
         {appointments.length > 0 &&
           appointments.map((appointment) => {
             return (
-              <div>
+              <div key={appointment.id}>
                 <p>{appointment.title}</p>
                 <p>{appointment.date}</p>
                 <p>{appointment.time}</p>
