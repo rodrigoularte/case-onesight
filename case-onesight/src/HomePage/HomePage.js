@@ -4,6 +4,7 @@ import 'react-calendar/dist/Calendar.css'
 import './input.scss'
 import {db} from "../index"
 import { addDoc, collection, getDocs } from "firebase/firestore"
+import AppointmentCard from "../Components/AppointmentCard/AppointmentCard"
 
 const HomePage = () => {
 
@@ -90,12 +91,9 @@ const HomePage = () => {
         {appointments.length > 0 &&
           appointments.map((appointment) => {
             return (
-              <div key={appointment.id}>
-                <p>{appointment.title}</p>
-                <p>{appointment.date}</p>
-                <p>{appointment.time}</p>
-                <p>{appointment.description}</p>
-              </div>
+              <AppointmentCard
+                appointment={appointment}
+              />
             )
           })
         }
