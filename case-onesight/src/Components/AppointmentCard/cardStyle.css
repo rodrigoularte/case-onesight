@@ -1,0 +1,85 @@
+#card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+  background-color: white;
+  color: #0B4575;
+}
+
+#card-container-green {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgb(46, 163, 46);
+  color: white;
+}
+
+#card-container-red {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgb(205, 54, 54);
+  color: white;
+}
+#card-container-red div {
+  text-decoration: line-through;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#card-container:hover {
+  background-color: rgba(212, 235, 255, 0.5764705882);
+}
+
+.date-time-span {
+  display: flex;
+  gap: 32px;
+}
+
+.approve-button {
+  background-color: green;
+  border: 1px solid green;
+  border-radius: 4px;
+  width: 116px;
+  padding: 4px 16px;
+  font-size: 20px;
+  color: white;
+}
+
+.approve-button:hover {
+  cursor: pointer;
+  background-color: rgb(0, 98, 0);
+  color: white;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 8px;
+}
+
+.cancel-button {
+  background-color: white;
+  border: 1px solid red;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 20px;
+  color: red;
+}
+
+.cancel-button:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+}
+
+/*# sourceMappingURL=cardStyle.css.map */
