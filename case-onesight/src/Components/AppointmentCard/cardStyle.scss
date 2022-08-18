@@ -2,37 +2,46 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  // width: 80%;
+  flex-wrap: wrap;
 
   padding: 16px;
-  gap: 8px;
+  gap: 16px;
 
   background-color: white;
   color: #0B4575;
+}
+
+#card-container:hover {
+  background-color: #d4ebff93;
 }
 
 #card-container-green {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 
   padding: 16px;
-  gap: 8px;
+  gap: 16px;
 
-  background-color: rgb(46, 163, 46);
+  background-color: #1c9a35;
   color: white;
+}
+
+#card-container-green:hover {
+  background-color: #16862c;
 }
 
 #card-container-red {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 
   padding: 16px;
-  gap: 8px;
+  gap: 16px;
 
-  background-color: rgb(205, 54, 54);
+  background-color: #c23d3d;
   color: white;
 
   div {
@@ -40,15 +49,24 @@
   }
 }
 
+#card-container-red:hover {
+  background-color: #be2b2b;
+}
+
 .info-container {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  flex-wrap: wrap;
   
   gap: 8px;
-}
 
-#card-container:hover {
-  background-color: #d4ebff93;
+  h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
 }
 
 .date-time-span {
@@ -57,15 +75,17 @@
 }
 
 .approve-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: green;
   border: 1px solid green;
   border-radius: 4px;
 
-  width: 116px;
+  padding: 8px 16px;
 
-  padding: 4px 16px;
-
-  font-size: 20px;
+  font-size: 18px;
   color: white;
 }
 
@@ -78,17 +98,22 @@
 
 .buttons-container {
   display: flex;
+  width: 200px;
   gap: 8px;
 }
 
 .cancel-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: white;
   border: 1px solid red;
   border-radius: 4px;
 
-  padding: 4px 12px;
+  padding: 8px;
 
-  font-size: 20px;
+  font-size: 18px;
   color: red;
 }
 
