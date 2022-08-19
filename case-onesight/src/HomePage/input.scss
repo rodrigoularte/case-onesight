@@ -10,7 +10,6 @@ main {
 
   width: 100vw;
   min-height: 100vh;
-  // max-height: 100vh;
 
   padding: 16px;
   gap: 32px;
@@ -37,52 +36,6 @@ main {
   width: 100%;
 }
 
-#form-container {
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  gap: 8px;
-
-  h1 {
-    color: #0B4575;
-    margin-bottom: 8px;
-  }
-
-  label {
-    font-size: 16px;
-    text-transform: uppercase;
-  }
-}
-
-.form-input {
-  width: 100%;
-  height: 40px;
-
-  padding: 0 16px;
-
-  border: none;
-}
-
-.form-time-input {
-  width: 40%;
-  height: 40px;
-
-  padding: 0 16px;
-
-  border: none;
-}
-
-#form-button {
-  // width: 56px;
-  padding: 8px;
-  background-color: #337ab7;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-size: 16px;
-}
-
 #form-button:hover {
   cursor: pointer;
   background-color: #0B4575;
@@ -103,13 +56,12 @@ main {
 
   width: 100%;
   max-height: 80vh;
+  padding-right: 8px;
 
-  // padding: 0 8px;
   gap: 16px;
 }
 
 .appointments-container::-webkit-scrollbar {
-  height: 12px;
   background: #DDDDDD;
   border-radius: 100px;
 }
