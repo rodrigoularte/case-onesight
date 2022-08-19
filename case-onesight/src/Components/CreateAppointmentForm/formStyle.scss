@@ -3,6 +3,7 @@
   flex-direction: column;
 
   width: 100%;
+  padding: 8px;
   gap: 8px;
 
   h1 {
@@ -22,7 +23,8 @@
 
   padding: 0 16px;
 
-  border: none;
+  border: 1px solid #0B4575;
+  border-radius: 4px;
 }
 
 .form-time-input {
@@ -31,7 +33,8 @@
 
   padding: 0 16px;
 
-  border: none;
+  border: 1px solid #0B4575;
+  border-radius: 4px;
 }
 
 #form-button {
