@@ -10,7 +10,15 @@
 
 ##  🕵Sobre
 
-O objetivo é criar um SPA com um calendário capaz de criar, editar e remover compromissos/eventos e mostrar seus detalhes.
+O site permite criar compromissos/eventos por meio de um calendário.
+Ao clicar em um dia no calendário, aparece um pequeno formulário que deve ser preenchido com as informações do compromisso que deseja criar. Após a criação, o compromisso e seus detalhes aparecerá em uma coluna ao lado do calendário e nele há dois botões: aprovar e cancelar.
+Caso clique em aprovar, o background fica verde. Caso clique em cancelar, o background fica vermelho e suas informações ficam tachadas.
+Também, após clicar em qualquer dos dois botões, aparecerá dois botões com ícones: editar e apagar.
+Ao clicar em editar, aparece um formulário com as informações a serem editadas. Ao clicar em apagar, aparece um alert pedindo confirmação e caso deseje continuar, o compromisso é apagado.
+
+Para o Front-End, usei React, Javascript e Sass. Também criei componentes e usei a biblioteca react-calendar para o calendário e react-icons para os ícones.
+
+Para o Back-End, usei o Firestore Database do Firebase.
 
 ---
 
@@ -37,7 +45,7 @@ O objetivo é criar um SPA com um calendário capaz de criar, editar e remover c
 
 ##  🧭Status do Projeto
 
-- ⌛ Fazendo
+- ⌛ Finalizado
 
 ---
 
@@ -56,20 +64,20 @@ O objetivo é criar um SPA com um calendário capaz de criar, editar e remover c
 - [x] Cancelar ou aprovar compromisso
 - [x] Deixar o fundo verde se aprovar o compromisso
 - [x] Deixar o texto tachado e com o fundo vermelho se cancelar o compromisso
-- [ ] Editar compromisso
+- [x] Editar compromisso
 - [x] Remover compromisso
 
 ---
 
 ## 💡Concepção do Projeto
 
-- Nenhum layout foi proposto, portanto, o layout foi totalmente feito por mim
+- Nenhum layout foi proposto, portanto, o layout foi totalmente idealizado por mim
 
 ---
 
 ## 🔗Link para Acessar
 
-- Pode accessar o app por [aqui](https://case-onesight.web.app/)
+- Pode acessar o app por [aqui](https://case-onesight.web.app/)
 
 ---
 
@@ -78,5 +86,6 @@ O objetivo é criar um SPA com um calendário capaz de criar, editar e remover c
 Para Rodar o projeto, siga as seguintes etapas no seu terminal :
 
 - git clone
-- dentro da pasta do projeto: npm install
+- cd case-onesight
+- npm install
 - npm run start

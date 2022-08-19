@@ -3,7 +3,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import './input.scss'
 import { db } from "../index"
-import { addDoc, collection, doc, deleteDoc, getDoc, getDocs, query, setDoc, orderBy } from "firebase/firestore"
+import { addDoc, collection, doc, deleteDoc, getDocs, query, setDoc, orderBy } from "firebase/firestore"
 import AppointmentCard from "../Components/AppointmentCard/AppointmentCard"
 import CreateAppointmentForm from "../Components/CreateAppointmentForm/CreateAppointmentForm"
 import EditAppointmentForm from "../Components/EditAppointmentForm/EditAppointmentForm"
@@ -18,9 +18,6 @@ const HomePage = () => {
   const [time, setTime] = useState("")
   const [description, setDescription] = useState("")
   const [appointments, setAppointments] = useState([])
-  const [appointment, setAppointment] = useState({})
-
-  // console.log(id)
 
   const getAppointments = async () => {
     const appointmentDB = collection(db, "appointment")
