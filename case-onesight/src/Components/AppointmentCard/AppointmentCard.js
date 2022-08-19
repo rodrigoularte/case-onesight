@@ -1,11 +1,16 @@
 import React from "react"
 import './cardStyle.scss'
 import {AiTwotoneCalendar, AiOutlineClockCircle} from "react-icons/ai"
+import {IoMdTrash} from "react-icons/io"
 
-const AppointmentCard = ({appointment, changeStatus}) => {
+const AppointmentCard = ({appointment, changeStatus, deleteAppointment}) => {
 
   const onClickButton = (id, status) => {
     changeStatus(id, status)
+  }
+
+  const onClickDelete = (id) => {
+    deleteAppointment(id)
   }
 
   let style
@@ -31,10 +36,14 @@ const AppointmentCard = ({appointment, changeStatus}) => {
         <p>{appointment.description}</p>
       </div>
 
-      {appointment.status === "none" &&
+      {appointment.status === "none" ?
         <span className="buttons-container">
           <button className="approve-button" onClick={() => onClickButton(appointment.id, "approved")}>Aprovar</button>
           <button className="cancel-button" onClick={() => onClickButton(appointment.id, "canceled")}>Cancelar</button>
+        </span> :
+        <span className="edit-delete-buttons-container">
+          {/* <button className="approve-button" onClick={() => onClickButton(appointment.id, "approved")}>Aprovar</button> */}
+          <button className="delete-button" onClick={() => onClickDelete(appointment.id)}><IoMdTrash/></button>
         </span>
       }
     </div>

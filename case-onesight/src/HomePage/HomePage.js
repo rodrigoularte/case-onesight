@@ -3,7 +3,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import './input.scss'
 import { db } from "../index"
-import { addDoc, collection, doc, getDocs, query, setDoc, orderBy } from "firebase/firestore"
+import { addDoc, collection, doc, deleteDoc, getDocs, query, setDoc, orderBy } from "firebase/firestore"
 import AppointmentCard from "../Components/AppointmentCard/AppointmentCard"
 
 const HomePage = () => {
@@ -15,9 +15,6 @@ const HomePage = () => {
   const [description, setDescription] = useState("")
   const [appointments, setAppointments] = useState([])
 
-  console.log(appointments)
-
-
   const getAppointments = async () => {
     const appointmentDB = collection(db, "appointment")
 
@@ -25,7 +22,6 @@ const HomePage = () => {
 
     const querySnapshot = await getDocs(q)
     const firebaseData = querySnapshot.docs.map((doc) => {
-      // console.log(`${doc.id} => ${doc.data()}`)
       return { ...doc.data(), id: doc.id }
     })
     setAppointments(firebaseData)
@@ -33,9 +29,7 @@ const HomePage = () => {
 
   const createAppointment = async (body) => {
     try {
-      const docRef = await addDoc(collection(db, "appointment"), body)
-
-      console.log("Document written with ID: ", docRef.id)
+      await addDoc(collection(db, "appointment"), body)
       window.location.reload()
     } catch (e) {
       console.error("Error adding document: ", e)
@@ -43,9 +37,17 @@ const HomePage = () => {
   }
 
   const changeStatus = async (id, status) => {
-    console.log(id, status)
     await setDoc(doc(db, "appointment", id), { status }, { merge: true })
     window.location.reload()
+  }
+
+  const deleteAppointment = async (id) => {
+    if (window.confirm("Tem certeza de que deseja deletar este compromisso?")) {
+      await deleteDoc(doc(db, "appointment", id))
+      window.location.reload()
+    } else {
+      alert("Operação cancelada.")
+    }
   }
 
   useEffect(() => {
@@ -64,14 +66,11 @@ const HomePage = () => {
       status: "none"
     }
 
-    console.log(body)
-
     createAppointment(body)
   }
 
   return (
     <main>
-
       <div id="left-container">
         <div id="calendar-container">
           <Calendar onClickDay={() => setShowForm(true)} onChange={onChange} value={value} />
@@ -118,14 +117,13 @@ const HomePage = () => {
                   key={appointment.id}
                   appointment={appointment}
                   changeStatus={changeStatus}
+                  deleteAppointment={deleteAppointment}
                 />
               )
             })
           }
         </nav>
       </div>
-
-
     </main>
   )
 }

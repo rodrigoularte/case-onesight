@@ -4,7 +4,6 @@
   align-items: center;
   flex-wrap: wrap;
 
-  padding: 16px;
   gap: 16px;
 
   background-color: white;
@@ -21,7 +20,6 @@
   align-items: center;
   flex-wrap: wrap;
 
-  padding: 16px;
   gap: 16px;
 
   background-color: #1c9a35;
@@ -38,7 +36,6 @@
   align-items: center;
   flex-wrap: wrap;
 
-  padding: 16px;
   gap: 16px;
 
   background-color: #c23d3d;
@@ -59,6 +56,7 @@
   flex-grow: 1;
   flex-wrap: wrap;
   
+  padding: 16px 0 16px 16px;
   gap: 8px;
 
   h3 {
@@ -122,4 +120,40 @@
 
   background-color: red;
   color: white;
+}
+
+.edit-delete-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: white;
+
+  width: 50px;
+  height: 100%;
+
+  padding: 8px;
+  gap: 8px;
+}
+
+.delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  
+  height: 24px;
+
+  font-size: 24px;
+  color: red;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+
+  color: red;
+  transform: scale(1.2);
 }
