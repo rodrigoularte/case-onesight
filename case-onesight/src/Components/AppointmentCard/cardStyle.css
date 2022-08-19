@@ -86,6 +86,13 @@
   width: 200px;
   gap: 8px;
 }
+@media screen and (min-device-width: 300px) and (max-device-width: 500px) {
+  .buttons-container {
+    justify-content: space-evenly;
+    width: 100%;
+    padding-bottom: 16px;
+  }
+}
 
 .cancel-button {
   display: flex;
@@ -108,12 +115,34 @@
 .edit-delete-buttons-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   background-color: white;
   width: 50px;
   height: 100%;
   padding: 8px;
   gap: 8px;
+}
+@media screen and (min-device-width: 300px) and (max-device-width: 500px) {
+  .edit-delete-buttons-container {
+    min-height: 120px;
+  }
+}
+
+.edit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: none;
+  height: 24px;
+  font-size: 24px;
+  color: #0B4575;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+  color: #0B4575;
+  transform: scale(1.2);
 }
 
 .delete-button {
@@ -122,7 +151,6 @@
   align-items: center;
   background-color: white;
   border: none;
-  border-radius: 50%;
   height: 24px;
   font-size: 24px;
   color: red;

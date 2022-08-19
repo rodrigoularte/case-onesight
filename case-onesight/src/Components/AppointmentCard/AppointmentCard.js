@@ -1,16 +1,13 @@
 import React from "react"
 import './cardStyle.scss'
 import {AiTwotoneCalendar, AiOutlineClockCircle} from "react-icons/ai"
-import {IoMdTrash} from "react-icons/io"
+import {IoMdTrash, IoMdCreate} from "react-icons/io"
 
-const AppointmentCard = ({appointment, changeStatus, deleteAppointment}) => {
+const AppointmentCard = ({appointment, changeStatus, deleteAppointment, setId, setShowEditAppointment}) => {
 
-  const onClickButton = (id, status) => {
-    changeStatus(id, status)
-  }
-
-  const onClickDelete = (id) => {
-    deleteAppointment(id)
+  const onClickEdit = (id) => {
+    setId(id)
+    setShowEditAppointment(true)
   }
 
   let style
@@ -38,12 +35,12 @@ const AppointmentCard = ({appointment, changeStatus, deleteAppointment}) => {
 
       {appointment.status === "none" ?
         <span className="buttons-container">
-          <button className="approve-button" onClick={() => onClickButton(appointment.id, "approved")}>Aprovar</button>
-          <button className="cancel-button" onClick={() => onClickButton(appointment.id, "canceled")}>Cancelar</button>
+          <button className="approve-button" onClick={() => changeStatus(appointment.id, "approved")}>Aprovar</button>
+          <button className="cancel-button" onClick={() => changeStatus(appointment.id, "canceled")}>Cancelar</button>
         </span> :
         <span className="edit-delete-buttons-container">
-          {/* <button className="approve-button" onClick={() => onClickButton(appointment.id, "approved")}>Aprovar</button> */}
-          <button className="delete-button" onClick={() => onClickDelete(appointment.id)}><IoMdTrash/></button>
+          <button className="edit-button" onClick={() => onClickEdit(appointment.id)}><IoMdCreate/></button>
+          <button className="delete-button" onClick={() => deleteAppointment(appointment.id)}><IoMdTrash/></button>
         </span>
       }
     </div>
