@@ -5,6 +5,7 @@ import './input.scss'
 import { db } from "../index"
 import { addDoc, collection, doc, deleteDoc, getDocs, query, setDoc, orderBy } from "firebase/firestore"
 import AppointmentCard from "../Components/AppointmentCard/AppointmentCard"
+import CreateAppointmentForm from "../Components/CreateAppointmentForm/CreateAppointmentForm"
 
 const HomePage = () => {
 
@@ -76,34 +77,17 @@ const HomePage = () => {
           <Calendar onClickDay={() => setShowForm(true)} onChange={onChange} value={value} />
         </div>
         {showForm ?
-          <form id="form-container" onSubmit={onSubmitForm}>
-            <h1>{value.toLocaleDateString()}</h1>
-            <label>Título</label>
-            <input
-              className="form-input"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-            <label>Horário</label>
-            <input
-              className="form-time-input"
-              type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-              required
-            />
-            <label>Descrição</label>
-            <input
-              className="form-input"
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="(Opcional)"
-            />
-            <button id="form-button">Salvar</button>
-          </form> : <h2>Selecione um dia no calendário acima para agendar um compromisso.</h2>
+          <CreateAppointmentForm
+            onSubmitForm={onSubmitForm}
+            value={value}
+            title={title}
+            setTitle={setTitle}
+            time={time}
+            setTime={setTime}
+            description={description}
+            setDescription={setDescription}
+          /> :
+          <h2>Selecione um dia no calendário acima para agendar um compromisso.</h2>
         }
       </div>
 
